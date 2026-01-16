@@ -11,12 +11,27 @@ public class TriviaGame {
 		String[] mediumAnswers = {};
 		String[] hardQuestions = {};
 		String[] hardAnswers = {};
-		int points;
+		int correctPoints;
+		int incorrectPoints;
 		int mark;
-		
+		int userInput = 0;
+		Scanner sc = new Scanner(System.in);
 		
 		//Introduction
 		intro();
+		userInput = sc.nextInt();
+		
+		//menu loop
+		
+		while (userInput != 4) {
+			
+			if (userInput == 1) {
+				
+				correctPoints = compareQuestions(easyQuestions, easyAnswers);
+				incorrectPoints = easyQuestions.length - correctPoints;
+				
+			}
+		}
 		
 	}
 	
@@ -38,6 +53,7 @@ public class TriviaGame {
 			
 			if (userAns.equals(answ[i])) {
 				userScore++;
+				System.out.println("Correct!");
 			}
 			else {
 				System.out.println("Incorrect!");
@@ -59,6 +75,29 @@ public class TriviaGame {
 		System.out.println("Type 2 for the medium difficulty!");
 		System.out.println("Type 3 for the hard difficulty!");
 		System.out.println("Type 4 to exit!");
+		
+	}
+	
+	//DESCRIPTION - Calculates percent
+	//PARAMETERS - double c, double i
+	//RETURN TYPE - String
+	public static double averageCalc(double c, double t) {
+		
+		//variables
+		double average;
+		
+		//calculations
+		average = c/t;
+		
+		//rounding
+		average = average * 1000;
+		
+		Math.round(average);
+		
+		average = average/10;
+		
+		
+		return average;
 		
 	}
 
