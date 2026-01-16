@@ -1,6 +1,6 @@
 package nathanJavaCode;
 
-public class Test {
+public class TriviaGame {
 
 	public static void main(String[] args) {
 		
