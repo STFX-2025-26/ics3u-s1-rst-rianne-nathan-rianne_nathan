@@ -6,7 +6,7 @@ public class TriviaGame {
 		
 		//variables
 		String[] easyQuestions = {"How many legs does a spider have?", "What is the name of the toy cowboy in Toy Story?", "What is the color of an emerald?", "Who wrote Romeo and Juliet?", "What is the name of the fairy in Peter Pan?"};
-		String[] easyAnswers = {"8", "woody", "green", "shakspeare", "tinkerbell"};
+		String[] easyAnswers = {"8", "woody", "green", "shakespeare", "tinkerbell"};
 		String[] mediumQuestions = {"What's the capital of Australia?", "What's the chemical symbol for Gold?", "Who painted The Starry Night?", "Whose nose grew longer every time he lied?", "What is the world's longest river?"};
 		String[] mediumAnswers = {"canberra", "au", "vanh gogh", "pinnochio", "nile"};
 		String[] hardQuestions = {"In which country can you find the world's largest escalator system?", "Which dinosaur's name means \"speedy thief\"?", "In what year was the Gregorian calendar adopted?", "Which animation technique involves tracing over live-action footage to create more realistic character movements?", "Which branch of mathematics gets its name from the Arabic word for \"reuniting\"?"};
@@ -76,7 +76,7 @@ public class TriviaGame {
 		for (int i=0; i<ques.length; i++) {
 			
 			System.out.println(ques[i]);
-			userAns = sc.next();
+			userAns = sc.nextLine();
 			
 			if (userAns.toLowerCase().equals(answ[i])) {
 				userScore++;
