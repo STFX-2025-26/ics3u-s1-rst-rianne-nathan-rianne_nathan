@@ -105,7 +105,7 @@ public class TriviaGame {
 		
 	}
 	//DESCRIPTION - Print out the results of the trivia game!
-	//PARAMETERS - int ac, int ai, double pc, double pi
+	//PARAMETERS - int ac, int ai, double pc, double pi 
 	//RETURN TYPE - void
 	public static void results(int ac, int ai, double pc, double pi) {
 		
