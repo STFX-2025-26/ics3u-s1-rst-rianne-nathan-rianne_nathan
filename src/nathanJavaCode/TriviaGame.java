@@ -32,6 +32,20 @@ public class TriviaGame {
 				incorrectPoints = easyQuestions.length - correctPoints;
 				correctMark = percentCalc(correctPoints, easyQuestions.length);
 				incorrectMark = percentCalc(incorrectPoints, easyQuestions.length);
+				results(correctPoints, incorrectPoints, correctMark, incorrectMark);
+				userInput = 4;
+			}
+			else if (userInput == 2) {
+				
+			}
+			
+			else if (userInput == 3) {
+				
+			}
+			
+			else if (userInput == 4) {
+				
+				System.out.println("Exiting");
 			}
 		}
 		
@@ -53,7 +67,7 @@ public class TriviaGame {
 			System.out.println(ques[i]);
 			userAns = sc.next();
 			
-			if (userAns.equals(answ[i])) {
+			if (userAns.toLowerCase().equals(answ[i])) {
 				userScore++;
 				System.out.println("Correct!");
 			}
@@ -88,8 +102,8 @@ public class TriviaGame {
 		System.out.println("Here are the Results!");
 		System.out.println("Answers correct: " + ac + "/" + (ac+ai));
 		System.out.println("Answers incorrect: " + ai + "/" + (ac+ai));
-		System.out.println("Percent correct:" + pc);
-		System.out.println("Percent incorrect:" + pi);
+		System.out.println("Percent correct:" + pc + "%");
+		System.out.println("Percent incorrect:" + pi + "%");
 		System.out.println("Hope you had fun!");
 		
 	}
