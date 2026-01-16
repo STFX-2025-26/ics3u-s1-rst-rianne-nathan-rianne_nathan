@@ -13,7 +13,8 @@ public class TriviaGame {
 		String[] hardAnswers = {};
 		int correctPoints;
 		int incorrectPoints;
-		int mark;
+		double correctMark;
+		double incorrectMark;
 		int userInput = 0;
 		Scanner sc = new Scanner(System.in);
 		
@@ -29,7 +30,8 @@ public class TriviaGame {
 				
 				correctPoints = compareQuestions(easyQuestions, easyAnswers);
 				incorrectPoints = easyQuestions.length - correctPoints;
-				
+				correctMark = percentCalc(correctPoints, easyQuestions.length);
+				incorrectMark = percentCalc(incorrectPoints, easyQuestions.length);
 			}
 		}
 		
@@ -77,11 +79,25 @@ public class TriviaGame {
 		System.out.println("Type 4 to exit!");
 		
 	}
+	//DESCRIPTION - Print out the results of the trivia game!
+	//PARAMETERS - int ac, int ai, double pc, double pi
+	//RETURN TYPE - void
+	public static void results(int ac, int ai, double pc, double pi) {
+		
+		
+		System.out.println("Here are the Results!");
+		System.out.println("Answers correct: " + ac + "/" + (ac+ai));
+		System.out.println("Answers incorrect: " + ai + "/" + (ac+ai));
+		System.out.println("Percent correct:" + pc);
+		System.out.println("Percent incorrect:" + pi);
+		System.out.println("Hope you had fun!");
+		
+	}
 	
 	//DESCRIPTION - Calculates percent
 	//PARAMETERS - double c, double i
 	//RETURN TYPE - String
-	public static double averageCalc(double c, double t) {
+	public static double percentCalc(double c, double t) {
 		
 		//variables
 		double average;
