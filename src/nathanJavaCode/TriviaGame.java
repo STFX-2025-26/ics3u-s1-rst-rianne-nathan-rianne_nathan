@@ -11,8 +11,12 @@ public class TriviaGame {
 		String[] mediumAnswers = {};
 		String[] hardQuestions = {};
 		String[] hardAnswers = {};
+		int points;
+		int mark;
 		
 		
+		//Introduction
+		intro();
 		
 	}
 	
@@ -42,6 +46,20 @@ public class TriviaGame {
 		
 		//returning score
 		return userScore;
+	}
+	
+	//DESCRIPTION - Print out introduction and instructions for trivia game to user
+	//PARAMETERS - none
+	//RETURN TYPE - void
+	public static void intro() {
+		
+		System.out.println("Hello! This is your super-duper-luper-scuper trivia game!");
+		System.out.println("Please select a difficulty!");
+		System.out.println("Type 1 for the easy difficulty!");
+		System.out.println("Type 2 for the medium difficulty!");
+		System.out.println("Type 3 for the hard difficulty!");
+		System.out.println("Type 4 to exit!");
+		
 	}
 
 }
