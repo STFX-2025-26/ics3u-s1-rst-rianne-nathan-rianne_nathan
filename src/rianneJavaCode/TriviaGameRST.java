@@ -19,10 +19,10 @@ public class TriviaGameRST {
 	private JButton Button1;
 	private JButton Button2;
 	private JButton mixedButton;
-	private JButton button4;
-	private JTextField textField;
+	private JButton Button4;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private JTextField textField_3;
 
 	/**
 	 * Launch the application.
@@ -72,90 +72,113 @@ public class TriviaGameRST {
 		lblNewLabel_1.setBounds(138, 36, 170, 14);
 		frame.getContentPane().add(lblNewLabel_1);
 		
-		JButton button4 = new JButton("Generate Question");
-		button4.addActionListener(new ActionListener() {
+		JButton Button4 = new JButton("Generate Question");
+		Button4.addActionListener(new ActionListener() {
+			private String selectedCategory = "";
 			public void actionPerformed(ActionEvent e) {
 				
-				// arrays for science questions and answers
-				String[] sciQuestions = new String[5];
-				sciQuestions[0] = "What is the most basic unit of the human body?";
-				sciQuestions[1] =  "What is the powerhouse of the cell?" ;
-				sciQuestions[2] =  "What is the process in which cells reproduce asexually?";
-				sciQuestions[3] = "What organelle contains the DNA of the cell?";
-				sciQuestions[4] =  "A collection of cells is known as what?";
-				
-				String[] sciAnswers = new String[5];
-				sciAnswers[0] = "Cell";
-				sciAnswers[1] = "Mitochondria";
-				sciAnswers[2] = "Mitosis";
-				sciAnswers[3] = "Nucleus";
-				sciAnswers[4] = "Tissue";
-				
-				// arrays for history questions and answers
-				String[] histQuestions = new String[5];
-				histQuestions[0] = "When was Canada founded?";
-				histQuestions[1] = "Who was the first prime minister of Canada?";
-				histQuestions[2] = "What year was the canadian penny discontinued?";
-				histQuestions[3] = "When did WWll end?";
-				histQuestions[4] = "When did WWl end?";
-				
-				String[] histAnswers = new String[5];
-				histAnswers[0] =  "1867";
-				histAnswers[1] =  "Sir John A Macdonald";
-				histAnswers[2] =  "2013";
-				histAnswers[3] =  "1917";
-				histAnswers[4] =  "1945";
-				
-				
-				int totalLength = sciQuestions.length + histQuestions.length;
-				int randomIndex = (int) (Math.random() * totalLength);
+					
 				
 				String currentQuestion = "";
 				
+				Object source = e.getSource();
 				
-				if (Button1.isSelected())
+				
+				if (source == Button1)
 					
-					currentQuestion = sciQuestions[(int)(Math.random() * sciQuestions.length)];
+					selectedCategory = "Science";
 				
 				
-				else if (Button2.isSelected())
+				else if (source == Button2)
 					
-					currentQuestion = histQuestions[(int)(Math.random() * histQuestions.length)];
+					selectedCategory = "History";
 				
 				
-				else if (mixedButton.isSelected())
+				else if (source == mixedButton)
 					
-					if (randomIndex < sciQuestions.length)
-						currentQuestion = sciQuestions[randomIndex];
+					selectedCategory = "Mixed";
 				
-					else
-						currentQuestion = histQuestions[randomIndex - sciQuestions.length];
+				else if (source == Button4)
+					
+					if (selectedCategory.equals(""))
+						textField_1.setText("Please choose a category first.");
+						return;
+						
+						
+					// arrays for science questions and answers
+					String[] sciQuestions = new String[5];
+					sciQuestions[0] = "What is the most basic unit of the human body?";
+					sciQuestions[1] =  "What is the powerhouse of the cell?" ;
+					sciQuestions[2] =  "What is the process in which cells reproduce asexually?";
+					sciQuestions[3] = "What organelle contains the DNA of the cell?";
+					sciQuestions[4] =  "A collection of cells is known as what?";
+						
+					String[] sciAnswers = new String[5];
+					sciAnswers[0] = "Cell";
+					sciAnswers[1] = "Mitochondria";
+					sciAnswers[2] = "Mitosis";
+					sciAnswers[3] = "Nucleus";
+					sciAnswers[4] = "Tissue";
+						
+					// arrays for history questions and answers
+					String[] histQuestions = new String[5];
+					histQuestions[0] = "When was Canada founded?";
+					histQuestions[1] = "Who was the first prime minister of Canada?";
+					histQuestions[2] = "What year was the canadian penny discontinued?";
+					histQuestions[3] = "When did WWll end?";
+					histQuestions[4] = "When did WWl end?";
+						
+					String[] histAnswers = new String[5];
+					histAnswers[0] =  "1867";
+					histAnswers[1] =  "Sir John A Macdonald";
+					histAnswers[2] =  "2013";
+					histAnswers[3] =  "1917";
+					histAnswers[4] =  "1945";
+					
+					int totalLength = sciQuestions.length + histQuestions.length;
+					int randomIndex = (int) (Math.random() * totalLength);
+					
+					if (selectedCategory.equals("Science"))
+					
+						currentQuestion = sciQuestions[(int)(Math.random() * sciQuestions.length)];
+					
+					else if (selectedCategory.equals("History"))
+						
+						 currentQuestion = histQuestions[(int)(Math.random() * histQuestions.length)];
+					
+					else if (selectedCategory.equals("Mixed"))
+						
+						if (randomIndex < sciQuestions.length)
+							currentQuestion = sciQuestions[randomIndex];
 				
-				textField.setText(currentQuestion);
-				textField_1.setText("");
+						else
+							currentQuestion = histQuestions[randomIndex - sciQuestions.length];
+				
+				textField_1.setText(currentQuestion);
+				
 				
 			}
 		});
-		button4.setBounds(138, 107, 149, 23);
-		frame.getContentPane().add(button4);
+		Button4.setBounds(138, 107, 149, 23);
+		frame.getContentPane().add(Button4);
 		
 		JLabel lblNewLabel_2 = new JLabel("Question:");
 		lblNewLabel_2.setBounds(65, 135, 56, 14);
 		frame.getContentPane().add(lblNewLabel_2);
 		
-		textField = new JTextField();
-		textField.setBounds(10, 160, 190, 55);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
+		textField_1 = new JTextField();
+		textField_1.setBounds(10, 160, 190, 55);
+		frame.getContentPane().add(textField_1);
+		textField_1.setColumns(10);
 		
 		JLabel lblNewLabel_3 = new JLabel("Type your answer here:");
 		lblNewLabel_3.setBounds(254, 135, 148, 14);
 		frame.getContentPane().add(lblNewLabel_3);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(254, 160, 170, 20);
-		frame.getContentPane().add(textField_1);
-		textField_1.setColumns(10);
+		textField_2 = new JTextField();
+		textField_2.setBounds(254, 160, 170, 20);
+		frame.getContentPane().add(textField_2);
+		textField_2.setColumns(10);
 		
 		JButton Button1 = new JButton("Science");
 		Button1.addActionListener(new ActionListener() {
@@ -186,6 +209,7 @@ public class TriviaGameRST {
 		frame.getContentPane().add(Button1);
 		
 		JButton mixedButton = new JButton("Mixed");
+		mixedButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		mixedButton.setForeground(new Color(0, 0, 0));
 		mixedButton.setBackground(new Color(255, 70, 70));
 		mixedButton.setBounds(175, 62, 89, 23);
@@ -219,10 +243,10 @@ public class TriviaGameRST {
 		lblNewLabel_4.setBounds(313, 236, 77, 14);
 		frame.getContentPane().add(lblNewLabel_4);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(397, 233, 27, 20);
-		frame.getContentPane().add(textField_2);
-		textField_2.setColumns(10);
+		textField_3 = new JTextField();
+		textField_3.setBounds(397, 233, 27, 20);
+		frame.getContentPane().add(textField_3);
+		textField_3.setColumns(10);
 		
 		JButton btnNewButton_4 = new JButton("Check Answer");
 		btnNewButton_4.setBounds(264, 191, 128, 23);
