@@ -16,12 +16,25 @@ public class TriviaGame {
 		double correctMark;
 		double incorrectMark;
 		int userInput = 0;
+		int start = 1;
+		String temp = "";
 		Scanner sc = new Scanner(System.in);
 		
 		//Introduction
 		intro();
-		userInput = sc.nextInt();
+		while (start == 1) {
 		
+			try {
+				temp = sc.next();
+				userInput = Integer.parseInt(temp);
+			}
+			catch (Exception e) {
+				System.out.println("Please try again");
+				
+			}
+		}
+		
+		start = 0;
 		//menu loop
 		
 		while (userInput != 4) {
