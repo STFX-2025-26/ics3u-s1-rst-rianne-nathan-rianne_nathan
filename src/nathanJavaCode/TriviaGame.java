@@ -17,13 +17,12 @@ public class TriviaGame {
 		double incorrectMark;
 		int userInput = 0;
 		int start = 1;
+		int loop = 0;
 		String temp = "";
 		Scanner sc = new Scanner(System.in);
 		
 		//Introduction
 		intro();
-		while (start == 1) {
-		
 			try {
 				temp = sc.next();
 				userInput = Integer.parseInt(temp);
@@ -32,7 +31,7 @@ public class TriviaGame {
 				System.out.println("Please try again");
 				
 			}
-		}
+			
 		
 		start = 0;
 		//menu loop
@@ -59,10 +58,10 @@ public class TriviaGame {
 			}
 			
 			else if (userInput == 3) {
-				correctPoints = compareQuestions(hardQuestions, hardAnswers);
-				incorrectPoints = hardQuestions.length - correctPoints;
-				correctMark = percentCalc(correctPoints, hardQuestions.length);
-				incorrectMark = percentCalc(incorrectPoints, hardQuestions.length);
+				correctPoints = (compareQuestions(hardQuestions, hardAnswers)) * 3;
+				incorrectPoints = ((hardQuestions.length) * 3) - correctPoints;
+				correctMark = percentCalc(correctPoints, (hardQuestions.length * 3));
+				incorrectMark = percentCalc(incorrectPoints, (hardQuestions.length * 3));
 				results(correctPoints, incorrectPoints, correctMark, incorrectMark);
 				userInput = 4;
 			}
@@ -84,19 +83,30 @@ public class TriviaGame {
 		int userScore = 0;
 		Scanner sc = new Scanner(System.in);
 		String userAns = "";
-		
+		int loop = 0;
+		int loop1 = 0;
+		int loopLength = ques.length;
 		//for loop asking questions
-		for (int i=0; i<ques.length; i++) {
-			
-			System.out.println(ques[i]);
-			userAns = sc.nextLine();
-			
-			if (userAns.toLowerCase().equals(answ[i])) {
-				userScore++;
-				System.out.println("Correct!");
-			}
-			else {
-				System.out.println("Incorrect!");
+		for (int i=0; i<loopLength; i++) {
+			loop1++;
+			while (loop != loop1) {
+				System.out.println(ques[i]);
+				userAns = sc.nextLine();
+				if (userAns.toLowerCase().equals(answ[i])) {
+					userScore++;
+					System.out.println("Correct!");
+					loop++;
+					
+				}
+				else if(userAns.toLowerCase().equals((" "))) {
+					System.out.println("Please Input anything but nothing!");
+					
+				}
+				
+				else {
+					System.out.println("Incorrect!");
+					loop++;
+				}
 			}
 		}
 		
@@ -114,6 +124,7 @@ public class TriviaGame {
 		System.out.println("Type 1 for the easy difficulty!");
 		System.out.println("Type 2 for the medium difficulty!");
 		System.out.println("Type 3 for the hard difficulty!");
+		System.out.println("Note that getting answers right in the hard difficulty gives you 3 points per questions");
 		System.out.println("Type 4 to exit!");
 		
 	}
@@ -124,8 +135,8 @@ public class TriviaGame {
 		
 		
 		System.out.println("Here are the Results!");
-		System.out.println("Answers correct: " + ac + "/" + (ac+ai));
-		System.out.println("Answers incorrect: " + ai + "/" + (ac+ai));
+		System.out.println("Points correct: " + ac + "/" + (ac+ai));
+		System.out.println("Points incorrect: " + ai + "/" + (ac+ai));
 		System.out.println("Percent correct:" + pc + "%");
 		System.out.println("Percent incorrect:" + pi + "%");
 		System.out.println("Hope you had fun!");
