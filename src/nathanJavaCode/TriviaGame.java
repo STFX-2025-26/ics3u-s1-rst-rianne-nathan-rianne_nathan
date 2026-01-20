@@ -85,9 +85,10 @@ public class TriviaGame {
 		String userAns = "";
 		int loop = 0;
 		int loop1 = 0;
-		int loopLength = ques.length;
+
+		
 		//for loop asking questions
-		for (int i=0; i<loopLength; i++) {
+		for (int i=0; i<ques.length; i++) {
 			loop1++;
 			while (loop != loop1) {
 				System.out.println(ques[i]);
