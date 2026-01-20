@@ -27,6 +27,11 @@ public class TriviaGameRST {
 	private int points = 0;
 	String currentQuestion = "";
 	private String selectedCategory = "";
+	private int totalQuestions = 0;
+	private int correctAnswers = 0;
+	private final int MAX_QUESTIONS = 5;
+	private int score = totalQuestions / 5 * 100;
+
 
 	/**
 	 * Launch the application.
@@ -187,14 +192,21 @@ public class TriviaGameRST {
 		        // Check answer (case-insensitive)
 		        if (userAnswer.equalsIgnoreCase(correctAnswer)) {
 		            points += 1;
-		            JOptionPane.showMessageDialog(frame, "Correct! You earned 1 point.");
-		        } else {
-		            JOptionPane.showMessageDialog(frame, "Wrong! The correct answer was: " + correctAnswer);
+		            totalQuestions += 1;
+		            JOptionPane.showMessageDialog(frame, "Answer correct! You earned 1 point.");
+		        } 
+		        
+		        else {
+		        	points -= 1;
+		            JOptionPane.showMessageDialog(frame, "Answer incorrect! The correct answer was: " + correctAnswer);
 		        }
 
 		        textField_3.setText(String.valueOf(points));
-		        textField_2.setText(""); // clear the answer box for next question
+		        textField_2.setText("");
+		        if (totalQuestions >= MAX_QUESTIONS) {
+		        	JOptionPane.showMessageDialog(frame, "You got" + totalQuestions + "/5, that's" + score + "%.");
 				
+		        }
 			}
 		});
 		btnNewButton_4.setBounds(264, 191, 128, 23);
